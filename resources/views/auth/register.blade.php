@@ -1,9 +1,7 @@
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+        <x-slot name="logo">           
+                <h1 class="text-5xl">Registro de usuarios</h1>            
         </x-slot>
 
         <!-- Validation Errors -->
@@ -12,13 +10,45 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
-            <div>
+             <!-- Name -->
+             <div>
                 <x-label for="name" :value="__('Name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
+            <!-- RUT -->
+            <div class="mt-4">
+                <x-label for="rut" :value="__('RUT')" />
 
+                <x-input id="rut" class="block mt-1 w-full" type="text" name="rut" :value="old('rut')" required autofocus />
+            </div>
+             <!-- Telefono -->
+            <div  class="mt-4">
+                <x-label for="telefono" :value="__('Telefono')" />
+
+                <x-input id="telefono" class="block mt-1 w-full" type="number" name="telefono" :value="old('telefono')" required autofocus />
+            </div>
+             <!-- Direccion -->
+            <div  class="mt-4">
+                <x-label for="direccion" :value="__('Dirección')" />
+
+                <x-input id="direccion" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autofocus />
+            </div>
+             <!-- Fecha de nacimiento -->
+             <div  class="mt-4">
+                <x-label for="f_nacimiento" :value="__('Fecha de nacimiento')" />
+
+                <x-input id="f_nacimiento" class="block mt-1 w-full" type="date" name="f_nacimiento" :value="old('f_nacimiento')" required autofocus />
+            </div>
+            <!-- Prevision
+            <div  class="mt-4">
+                <x-label for="prevision" :value="__('Prevision')" />
+                    <select id="prevision" class="block mt-1 w-full" name="prevision"" >
+                        <option>Yes</option>
+                        <option>No</option>
+                        <option>Maybe</option>
+                    </select>
+            </div>-->
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />

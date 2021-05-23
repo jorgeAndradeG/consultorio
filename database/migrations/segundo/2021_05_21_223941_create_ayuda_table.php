@@ -17,7 +17,7 @@ class CreateAyudaTable extends Migration
             $table->id();
             $table->string('motivo');
             $table->unsignedBigInteger('id_u_r');
-            $table->foreign('id_u_r')->references('id_u')->on('users');
+            $table->foreign('id_u_r')->references('id')->on('users');
             $table->timestamps();
         });
     }
