@@ -44,9 +44,7 @@
             <div  class="mt-4">
                 <x-label for="prevision" :value="__('Prevision')" />
                     <select id="prevision" class="block mt-1 w-full" name="prevision"" >
-                        <option>Yes</option>
-                        <option>No</option>
-                        <option>Maybe</option>
+                        <option value=""></option>
                     </select>
             </div>-->
             <!-- Email Address -->
