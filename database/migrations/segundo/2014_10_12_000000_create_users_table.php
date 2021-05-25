@@ -17,9 +17,9 @@ class CreateUsersTable extends Migration
             $table->id('id');
             $table ->string('rut');
             $table->string('name');
-            $table->string('direccion');
+            $table->string('direccion')->nullable();
             $table->date('f_nacimiento')->nullable();
-            $table->integer('telefono');            
+            $table->integer('telefono')->nullable();            
             $table->unsignedBigInteger('id_r')->nullable();
             $table->foreign('id_r')->references('id_r')->on('rols');
             $table->unsignedBigInteger('id_p')->nullable();

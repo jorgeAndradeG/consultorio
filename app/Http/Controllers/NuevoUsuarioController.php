@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
 use App\Models\User;
 use App\Models\Especialidad;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 
-class ConsultaController extends Controller
+class NuevoUsuarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +20,9 @@ class ConsultaController extends Controller
      */
     public function index()
     {
+        $roles = Rol::all();
         $especialidades = Especialidad::all();
-        $medicos = User::Where('id_r',3)->get();
-        return view('consulta.agendar-consulta',compact('especialidades','medicos'));
+        return view('nuevousuario.create-usuario',compact('roles','especialidades'));
     }
 
     /**
@@ -39,15 +43,28 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        Consulta::create([
-            "hora" => $request['hora'],
-            "valor" => $request['valor'],
-            "id_u" => $user->id,
-            "id_u_r" => $request['medico'],
-            "box" => "v-14",
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'rut'=>'required|string|max:15',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', Rules\Password::defaults()],
+        
         ]);
-        return redirect('/agendar');
+
+        $user = User::create([
+            'name' => $request->name,
+            'rut'=>$request->rut,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'id_r' => $request->rol ,
+            'id_e' => $request->especialidad,
+        ]);
+
+
+        event(new Registered($user));
+
+        return redirect('/newUser');
     }
 
     /**
@@ -92,6 +109,6 @@ class ConsultaController extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

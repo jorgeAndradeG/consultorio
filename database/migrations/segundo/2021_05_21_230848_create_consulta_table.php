@@ -15,11 +15,11 @@ class CreateConsultaTable extends Migration
     {
         Schema::create('consulta', function (Blueprint $table) {
             $table->id();
-            $table->string('patologia');
+            $table->string('patologia')->nullable();
             $table->time('hora');
             $table->string('box');
             $table->integer('valor');
-            $table->string('asistenacio');
+            $table->string('asistencia')->nullable();
             $table->unsignedBigInteger('id_u');
             $table->unsignedBigInteger('id_u_r');
             $table->foreign('id_u_r')->references('id')->on('users');

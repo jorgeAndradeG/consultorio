@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\NuevoUsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::resource('/agendar',ConsultaController::class);
+
+//Route::resource('/cancelar',ConsultaController::class);
+
+Route::resource('/newUser',NuevoUsuarioController::class);
 
 require __DIR__.'/auth.php';
