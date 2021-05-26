@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Especialidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ConsultaController extends Controller
+class HomeLoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,7 @@ class ConsultaController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $especialidades = Especialidad::all();
-        $medicos = User::Where('id_r',3)->get();
-        return view('consulta.agendar-consulta',compact('especialidades','medicos'))->with(['usuario' => $user]);
+        return view('homelogin')->with(['usuario' => $user]);
     }
 
     /**
@@ -40,15 +36,7 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        Consulta::create([
-            "hora" => $request['hora'],
-            "valor" => $request['valor'],
-            "id_u" => $user->id,
-            "id_u_r" => $request['medico'],
-            "box" => "v-14",
-        ]);
-        return redirect('/agendar');
+        //
     }
 
     /**
@@ -93,6 +81,6 @@ class ConsultaController extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

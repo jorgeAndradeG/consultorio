@@ -42,11 +42,11 @@
         </select>
         </div>  
         <div class="mb-3">
-          <button type="button" class="btn btn-warning" onClick="valor()">Calcular Valor</button>
+          <button type="button" class="btn btn-warning" onclick="valor()">Calcular Valor</button>
         </div>
         <div class="mb-3" id="valor" style="display:none">
           <label for="exampleInputEmail1" class="form-label">Valor</label>
-          <input class="form-control" name="valor" type="text" value="$12000" disabled/>
+          <input class="form-control" type="text" value="$12000" disabled/>
         </div>
 
         <div style="text-align:center">

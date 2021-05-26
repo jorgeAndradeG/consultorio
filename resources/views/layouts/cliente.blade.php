@@ -28,11 +28,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-link" aria-current="page" href="/agendar">Agendar Hora</a>
-            <a class="nav-link" href="/cancelar">Cancelar Hora</a>
-            <a class="nav-link" href="/newUser">Agregar Usuario</a>
+        @if($usuario->id_r == 1)
+        <a class="nav-link" href="/newUser">Agregar Usuario</a>
+        @elseif($usuario->id_r == 2)
+
+        @elseif($usuario->id_r == 3)
+        <a class="nav-link" aria-current="page" href="/agendar">Agendar Hora</a>
+        <a class="nav-link" href="/cancelar">Cancelar Hora</a>
+        @else
+
+        @endif
+            
         </div>
         </div>
+              
+        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-dropdown-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Cerrar Sesión') }}
+                            </x-dropdown-link>
+                        </form>
     </div>
     </nav>
 </div>

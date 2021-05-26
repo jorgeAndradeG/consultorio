@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\HomeLoginController;
 use App\Http\Controllers\NuevoUsuarioController;
 
 /*
@@ -22,6 +23,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('/homeLogin',HomeLoginController::class);
 
 Route::resource('/agendar',ConsultaController::class);
 

@@ -20,9 +20,10 @@ class NuevoUsuarioController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $roles = Rol::all();
         $especialidades = Especialidad::all();
-        return view('nuevousuario.create-usuario',compact('roles','especialidades'));
+        return view('nuevousuario.create-usuario',compact('roles','especialidades'))->with(['usuario' => $user]);
     }
 
     /**
