@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Consulta;
 use App\Models\Especialidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class ConsultaController extends Controller
     {
         $user = Auth::user();
         $especialidades = Especialidad::all();
-        $medicos = User::Where('id_r',3)->get();
+        $medicos = User::Where('id_r',2)->get();
         return view('consulta.agendar-consulta',compact('especialidades','medicos'))->with(['usuario' => $user]);
     }
 
@@ -40,15 +41,20 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $numeroBox = rand(1,25);
+        $letrasBoxArray = str_split("abcdefg");
+        $letraBox = $letrasBoxArray[0];
+
         $user = Auth::user();
         Consulta::create([
             "hora" => $request['hora'],
-            "valor" => $request['valor'],
+            "valor" => $request['precioConsulta'],
             "id_u" => $user->id,
             "id_u_r" => $request['medico'],
-            "box" => "v-14",
+            "box" => $letraBox . strval($numeroBox),
         ]);
-        return redirect('/agendar');
+        return redirect('/homeLogin')->with(['msg' => 'Ya agendaste tu hora!']);
     }
 
     /**
