@@ -6,7 +6,7 @@
     <div class="col-2"></div>
     <div class="col-8">
     <x-auth-validation-errors class="mb-4" :errors="$errors" />
-<form method="POST"  action="{{action('App\Http\Controllers\NuevoUsuarioController@store')}}"">
+<form method="POST"  action="{{action('App\Http\Controllers\NuevoUsuarioController@store')}}">
       @csrf
 
 
@@ -16,19 +16,19 @@
         </div>
         <div class="mb-3">
           <label for="name" class="form-label">Nombre</label>
-          <input id="name" class="form-control" type="text" name="name" required autofocus />
+          <input id="name" class="form-control" type="text" name="name" required  />
         </div>
         <div class="mb-3">
           <label for="correo" class="form-label">Correo</label>
-          <input id="correo" class="form-control" type="mail" name="email" required autofocus />
+          <input id="correo" class="form-control" type="mail" name="email" required  />
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Contraseña</label>
-          <input id="password" class="form-control" type="password" name="password" required autofocus />
+          <input id="password" class="form-control" type="password" name="password" required  />
         </div>
         <div class="mb-3">
           <label for="password2" class="form-label">Confirmar Contraseña</label>
-          <input id="password2" class="form-control" type="password" name="password2" required autofocus />
+          <input id="password2" class="form-control" type="password" name="password2" required  />
         </div>
 
         <div class="mb-3">

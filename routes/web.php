@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\HomeLoginController;
 use App\Http\Controllers\NuevoUsuarioController;
+use App\Http\Controllers\CancelarConsultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,8 @@ Route::resource('/homeLogin',HomeLoginController::class);
 
 Route::resource('/agendar',ConsultaController::class);
 
-//Route::resource('/cancelar',ConsultaController::class);
+Route::resource('/cancelar',CancelarConsultaController::class);
+Route::post('/cancelar/eliminar',[CancelarConsultaController::class,'eliminar']);
 
 Route::resource('/newUser',NuevoUsuarioController::class);
 
