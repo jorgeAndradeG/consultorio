@@ -54,7 +54,7 @@ class ConsultaController extends Controller
             "id_u_r" => $request['medico'],
             "box" => $letraBox . strval($numeroBox),
         ]);
-        return redirect('/homeLogin')->with(['msg' => 'Ya agendaste tu hora!']);
+        return redirect('/agendar')->with(['message' => 'Ya agendaste tu hora!']);
     }
 
     /**

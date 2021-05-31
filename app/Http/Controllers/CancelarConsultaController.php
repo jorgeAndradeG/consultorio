@@ -94,7 +94,7 @@ class CancelarConsultaController extends Controller
         $usuario = Auth::user();
         if(Hash::check($request['password'], $usuario->password)){
             $consulta = Consulta::Destroy($request['consulta']);
-            return redirect('/cancelar');
+            return redirect('/cancelar')->with(['message'=>'Consulta cancelada correctamente']);
         }
         else{
 

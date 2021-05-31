@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\HomeLoginController;
 use App\Http\Controllers\NuevoUsuarioController;
 use App\Http\Controllers\CancelarConsultaController;
+use App\Http\Controllers\VerConsultasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,12 +27,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::resource('/homeLogin',HomeLoginController::class);
 
-Route::resource('/agendar',ConsultaController::class);
+Route::group(['middleware'=>'auth'],function(){
 
-Route::resource('/cancelar',CancelarConsultaController::class);
-Route::post('/cancelar/eliminar',[CancelarConsultaController::class,'eliminar']);
+    Route::resource('/homeLogin',HomeLoginController::class);
 
-Route::resource('/newUser',NuevoUsuarioController::class);
+    Route::resource('/agendar',ConsultaController::class);
+    
+    Route::resource('/cancelar',CancelarConsultaController::class);
+
+    Route::resource('/verConsultas', VerConsultasController::class);
+
+    Route::post('/cancelar/eliminar',[CancelarConsultaController::class,'eliminar']);
+    
+    Route::resource('/newUser',NuevoUsuarioController::class);
+});
+
+
 require __DIR__.'/auth.php';

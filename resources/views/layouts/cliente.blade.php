@@ -10,6 +10,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="icon" href="image\26167969_170973520325462_3262992718906276158_n.ico">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
@@ -31,7 +32,7 @@
         @if($usuario->id_r == 1)
         <a class="nav-link" href="/newUser">Agregar Usuario</a>
         @elseif($usuario->id_r == 2)
-
+        <a class="nav-link" href="/verConsultas">ver Consultas</a>
         @elseif($usuario->id_r == 3)
         <a class="nav-link" aria-current="page" href="/agendar">Agendar Hora</a>
         <a class="nav-link" href="/cancelar">Cancelar Hora</a>
