@@ -65,7 +65,7 @@ class NuevoUsuarioController extends Controller
 
         event(new Registered($user));
 
-        return redirect('/newUser');
+        return redirect('/newUser')->with('message',_('Nuevo usuario creado correctamente'));
     }
 
     /**

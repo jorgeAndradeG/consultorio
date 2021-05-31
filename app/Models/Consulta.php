@@ -12,5 +12,5 @@ class Consulta extends Model
     protected $connection = 'mysql';
     public $timestamps = true;
 	protected $table = 'consulta';	
-	protected $fillable = ['patologia','hora','box','valor','asistencia','id_u','id_u_r'];
+	protected $guarded = [];
 }

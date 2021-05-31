@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CancelarController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\HomeLoginController;
@@ -23,13 +24,15 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+//Sireve para validad que exista una autentificacion 
+Route::group(['middleware'=>'auth'],function(){
+    Route::resource('/homeLogin',HomeLoginController::class);
 
-Route::resource('/homeLogin',HomeLoginController::class);
-
-Route::resource('/agendar',ConsultaController::class);
-
-//Route::resource('/cancelar',ConsultaController::class);
-
-Route::resource('/newUser',NuevoUsuarioController::class);
+    Route::resource('/agendar',ConsultaController::class);
+    
+    Route::resource('/cancelar',CancelarController::class);
+    
+    Route::resource('/newUser',NuevoUsuarioController::class);
+});
 
 require __DIR__.'/auth.php';
