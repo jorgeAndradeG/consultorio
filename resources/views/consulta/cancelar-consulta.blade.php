@@ -1,36 +1,39 @@
 @extends('layouts.cliente')
 
-@section('main')
-    <div class="min-h-screen flex flex-col sm:justify-top items-center pt-6 sm:pt-0 from-gray-100 mt-20">
-        <h1 class="text-5xl mb-10">Cancelar consulta</h1>
-        <form method="POST" action="#">
-            @csrf
-            <!-- prevision -->
-            <div>
-                <x-label for="consulta" :value="__('Horas agendadas')" />
+@section('main')    
+<div class="container-fluid">
+<br><br>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        @if(isset($msg))
+        <h4 style="color:red;text-align:center;">{{$msg}}</h4>
+        @endif
+      <form method="POST"  action="{{action('App\Http\Controllers\CancelarConsultaController@eliminar')}}"">
+      @csrf
+        <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Consulta</label>
+                <select name="consulta" class="form-select" aria-label="Default select example">
+                    @foreach($consultas as $consulta)
+                    @foreach($medicos as $medico)
+                        @if($medico->id == $consulta->id_u_r)
+                            <option value="{{$consulta->id}}">{{$consulta->hora}} con el doctor {{$medico->name}}</option>
+                        @endif
+                    @endforeach
 
-                <select id="consulta" class="block mt-1 w-full" name="consulta" >
-                    @foreach ($consultas as $consulta)
-                    <option value="{{$consulta->id}}">{{$consulta->box}}</option>
-                    @endforeach 
-                    <option value="" selected>Seleccionar</option>
+                @endforeach
                 </select>
-            </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Ingresar contraseña para cancelar la hora</label>
+                    <input id="password2" class="form-control" type="password" name="password" required  />
+                </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <x-button class="ml-3 mt-4 hover:bg-green-600">
-                {{ __('Confirmar') }}
-            </x-button>
-            
-        </form>
+                
+                <button type="submit" class="btn btn-success" id="botonAceptar">Cancelar Hora</button>
+                </form>
+    </div>
+    <div class="col-2"></div>
+    </div>
     </div>
 @endsection

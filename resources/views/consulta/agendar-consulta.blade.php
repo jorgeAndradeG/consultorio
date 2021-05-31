@@ -34,12 +34,12 @@
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Hora</label>
           <select name="hora" class="form-select" aria-label="Default select example">
-            <option value="9">09:00</option>
-            <option value="10">10:00</option>
-            <option value="11">11:00</option>
-            <option value="12">12:00</option>
-            <option value="14">14:00</option>
-            <option value="14">15:00</option>
+            <option value="09:00:00">09:00</option>
+            <option value="10:00:00">10:00</option>
+            <option value="11:00:00">11:00</option>
+            <option value="12:00:00">12:00</option>
+            <option value="14:00:00">14:00</option>
+            <option value="15:00:00">15:00</option>
         </select>
         </div>  
         <div class="mb-3">

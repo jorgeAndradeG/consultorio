@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Consulta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
-class CancelarController extends Controller
+class CancelarConsultaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,10 @@ class CancelarController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $consultas=Consulta::Where('id_u', Auth::user()->id)->get();
-        return view('consulta.cancelar-consulta',compact('consultas'))->with(['usuario' => $user]);
+        $usuario = Auth::user();
+        $consultas = Consulta::Where('id_u',$usuario->id)->get();
+        $medicos = User::Where('id_r',2)->get();
+        return view('consulta.cancelar-consulta',compact('medicos','consultas'))->with(['usuario' => $usuario]);
     }
 
     /**
@@ -84,5 +87,20 @@ class CancelarController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function eliminar(Request $request)
+    {
+        $usuario = Auth::user();
+        if(Hash::check($request['password'], $usuario->password)){
+            $consulta = Consulta::Destroy($request['consulta']);
+            return redirect('/cancelar');
+        }
+        else{
+
+            $consultas = Consulta::Where('id_u',$usuario->id)->get();
+            $medicos = User::Where('id_r',2)->get();
+            return view('consulta.cancelar-consulta',compact('medicos','consultas'))->with(['usuario' => $usuario,'msg' => 'Contraseña Incorrecta']);
+        }
     }
 }
