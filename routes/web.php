@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\CancelarController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AyudaController;
+use App\Http\Controllers\CancelarController;
 use App\Http\Controllers\ConsultaController;
 use App\Http\Controllers\HomeLoginController;
 use App\Http\Controllers\NuevoUsuarioController;
-use App\Http\Controllers\CancelarConsultaController;
 use App\Http\Controllers\VerConsultasController;
+use App\Http\Controllers\CancelarConsultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('/verConsultas', VerConsultasController::class);
 
     Route::post('/cancelar/eliminar',[CancelarConsultaController::class,'eliminar']);
+
+    Route::resource('/ayuda', AyudaController::class);
     
     Route::resource('/newUser',NuevoUsuarioController::class);
 });

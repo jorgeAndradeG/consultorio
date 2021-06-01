@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Consulta;
-use App\Models\Especialidad;
+use App\Models\Pregunta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ConsultaController extends Controller
+class AyudaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,8 @@ class ConsultaController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $especialidades = Especialidad::all();
-        $medicos = User::Where('id_r',2)->get();
-        return view('consulta.agendar-consulta',compact('especialidades','medicos'))->with(['usuario' => $user,'msg'=>'Consulta Creada correctamente']);
+        $preguntas = Pregunta::all();
+        return view('consulta.ayuda-consulta',compact('preguntas'))->with(['usuario' => $user]);
     }
 
     /**
@@ -41,21 +38,7 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
-
-        $numeroBox = rand(1,25);
-        $letrasBoxArray = str_split("abcdefg");
-        $letraBox = $letrasBoxArray[0];
-
-
-        $user = Auth::user();
-        Consulta::create([
-            "hora" => $request['hora'],
-            "valor" => $request['precioConsulta'],
-            "id_u" => $user->id,
-            "id_u_r" => $request['medico'],
-            "box" => $letraBox . strval($numeroBox),
-        ]);
-        return redirect('/agendar')->with(['message' => 'Ya agendaste tu hora!']);
+        //
     }
 
     /**
@@ -100,6 +83,6 @@ class ConsultaController extends Controller
      */
     public function destroy($id)
     {
-                
+        //
     }
 }

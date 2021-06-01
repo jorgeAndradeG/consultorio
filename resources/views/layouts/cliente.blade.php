@@ -32,10 +32,11 @@
         @if($usuario->id_r == 1)
         <a class="nav-link" href="/newUser">Agregar Usuario</a>
         @elseif($usuario->id_r == 2)
-        <a class="nav-link" href="/verConsultas">ver Consultas</a>
+        <a class="nav-link" href="/verConsultas">Ver Consultas</a>
         @elseif($usuario->id_r == 3)
         <a class="nav-link" aria-current="page" href="/agendar">Agendar Hora</a>
         <a class="nav-link" href="/cancelar">Cancelar Hora</a>
+        <a class="nav-link" href="/ayuda">Ayuda con Ejecutivo</a>
         @else
 
         @endif
