@@ -47,7 +47,7 @@ class NuevoUsuarioController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'rut'=>'required|string|max:15',
+            'rut'=>'required|string|min:9|max:15',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', Rules\Password::defaults()],
         

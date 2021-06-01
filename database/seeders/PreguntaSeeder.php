@@ -15,7 +15,7 @@ class PreguntaSeeder extends Seeder
     public function run()
     {
         $preguntas=[['pregunta'=>'No pudo agendar Consulta'],
-        ['pregunta'=>'NO pudo cancelar su consulta'],
+        ['pregunta'=>'No pudo cancelar su consulta'],
         ['pregunta'=>'No exite la especialidad'],
         ['pregunta'=>'Necesita que nos contactemos con usted'],
         ['pregunta'=>'Preguntar por horas'],
