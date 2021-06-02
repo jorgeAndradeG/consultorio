@@ -38,7 +38,7 @@
              <div  class="mt-4">
                 <x-label for="f_nacimiento" :value="__('Fecha de nacimiento')" />
 
-                <x-input id="f_nacimiento" class="block mt-1 w-full" type="date" name="f_nacimiento" :value="old('f_nacimiento')" required autofocus />
+                <x-input id="f_nacimiento" class="block mt-1 w-full" type="date" name="f_nacimiento" max="2021-06-01" :value="old('f_nacimiento')" required autofocus />
             </div>
             <!-- Prevision
             <div  class="mt-4">

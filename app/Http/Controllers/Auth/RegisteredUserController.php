@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'rut'=>'required|string|max:15|cl_rut',
+            'rut'=>'required|string|min:8|max:15|cl_rut',
             'telefono'=>'required|min:9|max:9',
             'direccion'=>'required',
             'f_nacimiento'=>'required|date',
