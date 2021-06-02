@@ -26,8 +26,8 @@
           <input id="password" class="form-control" type="password" name="password" required  />
         </div>
         <div class="mb-3">
-          <label for="password2" class="form-label">Confirmar Contraseña</label>
-          <input id="password2" class="form-control" type="password" name="password2" required  />
+          <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+          <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" required  />
         </div>
 
         <div class="mb-3">

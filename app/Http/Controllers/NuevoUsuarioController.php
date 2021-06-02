@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 
+
 class NuevoUsuarioController extends Controller
 {
     /**
@@ -47,9 +48,9 @@ class NuevoUsuarioController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'rut'=>'required|string|max:15',
+            'rut'=>'required|string|max:15|cl_rut',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => ['required','confirmed', Rules\Password::defaults()],
         
         ]);
 
