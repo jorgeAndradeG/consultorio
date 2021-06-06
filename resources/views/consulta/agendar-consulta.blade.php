@@ -9,6 +9,7 @@
     <div class="col-8">
       <x-auth-validation-errors class="mb-4" :errors="$errors" />
       <x-success-message class="mb-4"></x-success-message>
+      <x-horayfecha-message class="mb-4"></x-horayfecha-message>
       <form method="POST"  action="{{action('App\Http\Controllers\ConsultaController@store')}}"">
       @csrf
 

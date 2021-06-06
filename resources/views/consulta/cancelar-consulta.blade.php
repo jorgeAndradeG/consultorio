@@ -37,7 +37,7 @@
                     @foreach($consultas as $consulta)
                     @foreach($medicos as $medico)
                         @if($medico->id == $consulta->id_u_r)
-                            <option value="{{$consulta->id}}">{{$consulta->hora}} con el doctor {{$medico->name}}</option>
+                            <option value="{{$consulta->id}}"> El día {{$consulta->fecha}} a las {{$consulta->hora}} con el doctor {{$medico->name}}</option>
                         @endif
                     @endforeach
 

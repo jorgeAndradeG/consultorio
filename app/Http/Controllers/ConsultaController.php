@@ -48,10 +48,17 @@ class ConsultaController extends Controller
 
 
         $user = Auth::user();
+        $consultas = Consulta::Where('id_u',$user->id)->get();
+        foreach($consultas as $consulta){
+            if($consulta->id_u == $user->id && $consulta->hora == $request['hora'] && $consulta->fecha == $request['fecha']){
+                return redirect('/agendar')->with(['Emessage' => 'Ya tienes una consulta agendada en ese horario!']);
+            }
+        }
         Consulta::create([
             "hora" => $request['hora'],
             "valor" => $request['precioConsulta'],
             "id_u" => $user->id,
+            "fecha" => $request['fecha'],
             "id_u_r" => $request['medico'],
             "box" => $letraBox . strval($numeroBox),
         ]);

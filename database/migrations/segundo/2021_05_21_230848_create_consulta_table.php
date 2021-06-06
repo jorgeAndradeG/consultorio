@@ -17,6 +17,7 @@ class CreateConsultaTable extends Migration
             $table->id();
             $table->string('patologia')->nullable();
             $table->time('hora');
+            $table->date('fecha');
             $table->string('box');
             $table->integer('valor');
             $table->string('asistencia')->nullable();
