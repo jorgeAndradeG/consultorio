@@ -1,5 +1,6 @@
 @extends('layouts.cliente')
 @section('main')
+<div class="animate__animated animate__fadeIn">
 <div class="overflow-x-auto">
     <div class="min-w-screen min-h-screen flex items-top justify-center bg-gray-100 font-sans overflow-hidden">
         <div class="w-full lg:w-5/6">
@@ -67,5 +68,6 @@
             </div>            
         </div>
     </div>
+</div>
 </div>
 @endsection

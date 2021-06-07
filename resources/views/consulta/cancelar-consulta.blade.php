@@ -1,6 +1,7 @@
 @extends('layouts.cliente')
 
 @section('main')    
+<div class="animate__animated animate__fadeIn">
 <div class="container-fluid">
 <br><br>
   <div class="row">
@@ -54,6 +55,7 @@
                 </form>
     </div>
     <div class="col-2"></div>
+    </div>
     </div>
     </div>
 @endsection
