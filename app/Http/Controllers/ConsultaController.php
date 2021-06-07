@@ -63,6 +63,8 @@ class ConsultaController extends Controller
             "box" => $letraBox . strval($numeroBox),
         ]);
         return redirect('/agendar')->with(['message' => 'Ya agendaste tu hora!']);
+        /*$request =request()->all();
+        return response()->json($request);*/
     }
 
     /**

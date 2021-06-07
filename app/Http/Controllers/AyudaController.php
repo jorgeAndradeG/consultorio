@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ayuda;
 use App\Models\Pregunta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,7 @@ class AyudaController extends Controller
     {
         $user = Auth::user();
         $preguntas = Pregunta::all();
-        return view('consulta.ayuda-consulta',compact('preguntas'))->with(['usuario' => $user]);
+        return view('consulta.ayuda-consulta',compact(['preguntas','user']))->with(['usuario' => $user]);
     }
 
     /**
@@ -27,7 +28,7 @@ class AyudaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -38,7 +39,16 @@ class AyudaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $ayuda =Ayuda::create([
+            'motivo'=>$request->motivo,
+            'id_u_r'=>$user->id
+        ]);
+        return redirect()->back()-> with(['message'=>'Correcto','usuario' => $user]);
+        /*
+        $request =request()->all();
+        return response()->json($request);*/
+
     }
 
     /**

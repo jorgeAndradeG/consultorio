@@ -31,6 +31,7 @@
         <div class="navbar-nav">
         @if($usuario->id_r == 1)
         <a class="nav-link" href="/newUser">Agregar Usuario</a>
+        <a class="nav-link" href="/verAyuda">Ver ayuda</a>
         @elseif($usuario->id_r == 2)
         <a class="nav-link" href="/verConsultas">Ver Consultas</a>
         @elseif($usuario->id_r == 3)
@@ -59,6 +60,15 @@
 
     @section('main')
     @show
-    
+<div class="p-4 bg-white text-gray-800 flex justify-between">
+        <!--- izquierda--->
+        <div>
+            
+        </div>
+        <!--- derecha--->
+        <div class="flex items-center">
+            Copyright &copy; consultorio j&j 2021 
+        </div>
+ </div>    
 </body>
 </html>
