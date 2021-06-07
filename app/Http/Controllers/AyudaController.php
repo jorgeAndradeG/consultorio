@@ -40,6 +40,12 @@ class AyudaController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
+        $ayudas = Ayuda::Where('id_u_r',$user->id)->get();
+        foreach($ayudas as $ayuda){
+            if($ayuda->id_u_r == $user->id && $ayuda->motivo == $request->motivo){
+                return redirect()->back()-> with(['Emessage'=>'Usted ya solicitó esta ayuda.','usuario' => $user]);
+            }
+        }
         $ayuda =Ayuda::create([
             'motivo'=>$request->motivo,
             'id_u_r'=>$user->id
