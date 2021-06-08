@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Consulta;
+use App\Models\Prevision;
 use App\Models\Especialidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,9 @@ class ConsultaController extends Controller
         $user = Auth::user();
         $especialidades = Especialidad::all();
         $medicos = User::Where('id_r',2)->get();
-        return view('consulta.agendar-consulta',compact('especialidades','medicos'))->with(['usuario' => $user,'msg'=>'Consulta Creada correctamente']);
+        $prevision = Prevision::Where('id_p',$user->id_p)->get();
+        $previsionUsuario = $prevision[0];
+        return view('consulta.agendar-consulta',compact('especialidades','medicos'))->with(['usuario' => $user,'msg'=>'Consulta Creada correctamente','prevision' => $previsionUsuario]);
     }
 
     /**

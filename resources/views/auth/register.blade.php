@@ -22,6 +22,9 @@
 
                 <x-input id="rut" class="block mt-1 w-full" type="text" name="rut" :value="old('rut')" required autofocus />
             </div>
+
+
+
              <!-- Telefono -->
             <div  class="mt-4">
                 <x-label for="telefono" :value="__('Telefono')" />

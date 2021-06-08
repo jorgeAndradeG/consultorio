@@ -46,11 +46,14 @@
         </select>
         </div>  
         <div class="mb-3">
-          <button type="button" class="btn btn-warning" onclick="valor()">Calcular Valor</button>
+          <button type="button" class="btn btn-warning" onclick="valor({{$prevision}})">Calcular Valor</button>
         </div>
         <div class="mb-3" id="valor" style="display:none">
           <label for="exampleInputEmail1" class="form-label">Valor</label>
           <input class="form-control" type="text" id="valorConsulta" disabled/>
+          <p>Se aplicó un descuento del <b>{{$prevision->descuento}}%</b> gracias a su previsión <b>{{$prevision->nom_convenio}}</b>
+          <br><i>Valor sin descuento de $30.000</i></p>
+          
         </div>
         <input type="hidden" id="precioConsulta" name="precioConsulta" value="" />
 
@@ -68,12 +71,14 @@
 @endsection
 <script>
 
-  function valor(){
+  function valor(prevision){
     
       document.getElementById("botonAceptar").disabled = false;
     if(document.getElementById("valor").style.display == "none"){
       document.getElementById("valor").style.display = "block";
-      var valor = Math.floor(Math.random() * 25000) + 10000; 
+      var valor = 30000 * prevision.descuento;
+      valor = valor/100;
+      valor = 30000 - valor;
       document.getElementById("valorConsulta").value = "$" + valor;
       document.getElementById("precioConsulta").value = valor;
     }
