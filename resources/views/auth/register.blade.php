@@ -43,13 +43,17 @@
 
                 <x-input id="f_nacimiento" class="block mt-1 w-full" type="date" name="f_nacimiento" max="2021-06-01" :value="old('f_nacimiento')" required autofocus />
             </div>
-            <!-- Prevision
+            <!-- Prevision-->
             <div  class="mt-4">
                 <x-label for="prevision" :value="__('Prevision')" />
                     <select id="prevision" class="block mt-1 w-full" name="prevision"" >
-                        <option value=""></option>
+                        @forelse ($previsiones as $prevision)
+                        <option value="{{$prevision->id_p}}">{{$prevision->nom_convenio}}</option>
+                        @empty
+                        <option value="">No existen previsiones</option>
+                        @endforelse                        
                     </select>
-            </div>-->
+            </div>
             <!-- Email Address -->
             <div class="mt-4">
                 <x-label for="email" :value="__('Email')" />

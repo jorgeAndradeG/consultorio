@@ -35,14 +35,15 @@
         <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Consulta</label>
                 <select name="consulta" class="form-select" aria-label="Default select example">
-                    @foreach($consultas as $consulta)
-                    @foreach($medicos as $medico)
-                        @if($medico->id == $consulta->id_u_r)
-                            <option value="{{$consulta->id}}"> El día {{$consulta->fecha}} a las {{$consulta->hora}} con el doctor {{$medico->name}}</option>
-                        @endif
-                    @endforeach
-
-                @endforeach
+                    @forelse ($consultas as $consulta)
+                        @foreach($medicos as $medico)
+                            @if($medico->id == $consulta->id_u_r)
+                                <option value="{{$consulta->id}}"> El día {{$consulta->fecha}} a las {{$consulta->hora}} con el doctor {{$medico->name}}</option>
+                            @endif
+                        @endforeach
+                    @empty
+                    <option value="">Aun no tiene consultas</option>
+                    @endforelse
                 </select>
                 </div>
                 <div class="mb-3">

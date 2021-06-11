@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Prevision;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $previsiones=Prevision::all();
+        return view('auth.register',compact('previsiones'));
     }
 
     /**
@@ -50,6 +52,7 @@ class RegisteredUserController extends Controller
             'direccion'=>$request->direccion,
             'f_nacimiento'=>$request->f_nacimiento,
             'id_r'=>3,
+            'id_p'=>$request->prevision,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
