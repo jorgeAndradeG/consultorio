@@ -20,6 +20,7 @@ class CreateConsultaTable extends Migration
             $table->date('fecha');
             $table->string('box');
             $table->integer('valor');
+            $table->integer('pagado');
             $table->string('asistencia')->nullable();
             $table->unsignedBigInteger('id_u');
             $table->unsignedBigInteger('id_u_r');

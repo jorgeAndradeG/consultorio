@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
 use App\Models\Consulta;
 use App\Models\Prevision;
@@ -23,6 +24,7 @@ class ConsultaController extends Controller
         $medicos = User::Where('id_r',2)->get();
         $prevision = Prevision::Where('id_p',$user->id_p)->get();
         $previsionUsuario = $prevision[0];
+       
         return view('consulta.agendar-consulta',compact('especialidades','medicos'))->with(['usuario' => $user,'msg'=>'Consulta Creada correctamente','prevision' => $previsionUsuario]);
     }
 
@@ -64,6 +66,7 @@ class ConsultaController extends Controller
             "fecha" => $request['fecha'],
             "id_u_r" => $request['medico'],
             "box" => $letraBox . strval($numeroBox),
+            "cancelado" => 0,
         ]);
         return redirect('/agendar')->with(['message' => 'Ya agendaste tu hora!']);
         /*$request =request()->all();

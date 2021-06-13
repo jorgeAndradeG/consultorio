@@ -13,7 +13,6 @@
       <x-horayfecha-message class="mb-4"></x-horayfecha-message>
       <form method="POST"  action="{{action('App\Http\Controllers\ConsultaController@store')}}"">
       @csrf
-
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Especialidad</label>
           <select name="especialidad" class="form-select" aria-label="Default select example">
