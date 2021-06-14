@@ -59,6 +59,7 @@ class ConsultaController extends Controller
                 return redirect('/agendar')->with(['Emessage' => 'Ya tienes una consulta agendada en ese horario!']);
             }
         }
+
         Consulta::create([
             "hora" => $request['hora'],
             "valor" => $request['precioConsulta'],
@@ -66,7 +67,7 @@ class ConsultaController extends Controller
             "fecha" => $request['fecha'],
             "id_u_r" => $request['medico'],
             "box" => $letraBox . strval($numeroBox),
-            "cancelado" => 0,
+            "pagado" => 0,
         ]);
         return redirect('/agendar')->with(['message' => 'Ya agendaste tu hora!']);
         /*$request =request()->all();

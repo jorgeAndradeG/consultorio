@@ -41,8 +41,8 @@
         <a class="nav-link" aria-current="page" href="/agendar">Agendar Hora</a>
         <a class="nav-link" href="/cancelar">Cancelar Hora</a>
         <a class="nav-link" href="/ayuda">Ayuda con Ejecutivo</a>
-        @else
-
+        @elseif($usuario->id_r == 4)
+        <a class="nav-link" href="{{url('/pago')}}">Pagar consulta</a>
         @endif
             
         </div>

@@ -30,7 +30,7 @@
             </div>
         @endif
         <x-success-message class="mb-4"></x-success-message>
-      <form method="POST"  action="{{action('App\Http\Controllers\CancelarConsultaController@eliminar')}}"">
+      <form method="POST"  action="{{action('App\Http\Controllers\CancelarConsultaController@eliminar')}}">
       @csrf
         <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Consulta</label>

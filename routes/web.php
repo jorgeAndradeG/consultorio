@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeLoginController;
 use App\Http\Controllers\NuevoUsuarioController;
 use App\Http\Controllers\VerConsultasController;
 use App\Http\Controllers\CancelarConsultaController;
+use App\Http\Controllers\ConsultaPagoController;
 use App\Http\Controllers\VerAyudaController;
 
 /*
@@ -46,6 +47,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::resource('/ayuda', AyudaController::class);
     
     Route::resource('/newUser',NuevoUsuarioController::class);
+
+    Route::resource('/pago',ConsultaPagoController::class);
 });
 
 
