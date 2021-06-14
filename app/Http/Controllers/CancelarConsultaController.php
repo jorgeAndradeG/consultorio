@@ -91,6 +91,13 @@ class CancelarConsultaController extends Controller
 
     public function eliminar(Request $request)
     {
+        
+        
+        $request->validate([
+            'consulta'=>'required',
+            'password'=>'required'
+        ]);
+
         $usuario = Auth::user();
         if(Hash::check($request['password'], $usuario->password)){
             $consulta = Consulta::Destroy($request['consulta']);

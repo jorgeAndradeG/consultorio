@@ -29,6 +29,8 @@
                 </div>
             </div>
         @endif
+         <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
         <x-success-message class="mb-4"></x-success-message>
       <form method="POST"  action="{{action('App\Http\Controllers\CancelarConsultaController@eliminar')}}">
       @csrf

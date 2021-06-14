@@ -46,6 +46,10 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'hora'=>'required',
+            'fecha'=>'required'
+        ]);
 
         $numeroBox = rand(1,25);
         $letrasBoxArray = str_split("abcdefg");

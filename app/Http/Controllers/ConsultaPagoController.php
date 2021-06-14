@@ -20,6 +20,12 @@ class ConsultaPagoController extends Controller
 
     }
     public function update(Request $request,$id){
+        $request->validate([
+            'box'=>'required',
+            'fecha'=>'required',
+            'hora'=>'required',
+            'pagado'=>'required',
+        ]);
         $user = Auth::user();
         $consulta = request()->except('_token','_method');
         Consulta::where('id','=',$id)->update($consulta);
