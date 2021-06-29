@@ -90,5 +90,20 @@
                 </x-button>
             </div>
         </form>
+<script src="js\jquery.js"></script>
+<script src="inputmask\dist\jquery.inputmask.js"></script>
+<script>
+  $(document).ready(function(){
+    var rut = document.getElementById("rut");
+    $(rut).inputmask({
+        mask: '9{1,2}.9{3}.9{3}-(K|k|9)',
+        casing: 'upper',
+        clearIncomplete: true,
+        numericInput: true,
+        positionCaretOnClick: 'none'
+    });
+  });
+  
+</script>
     </x-auth-card>
 </x-guest-layout>

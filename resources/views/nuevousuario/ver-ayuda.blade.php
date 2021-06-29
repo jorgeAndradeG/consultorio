@@ -25,32 +25,32 @@
                         <tr>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$ayuda->id}}</span>
+                                    <span>{{isset($ayuda->id)?$ayuda->id:'Sin id'}}</span>
                                 </div>                                
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$ayuda->motivo}}</span>
+                                    <span>{{isset($ayuda->motivo)?$ayuda->motivo:'No existe motivo'}}</span>
                                 </div>                                
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$ayuda->name}}</span>
+                                    <span>{{isset($ayuda->name)?$ayuda->name:'No cuenta con nombre'}}</span>
                                 </div>                                
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$ayuda->created_at}}</span>
+                                    <span>{{isset($ayuda->created_at)?$ayuda->created_at:'No hay fecha de creacion'}}</span>
                                 </div>                                
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$ayuda->email}}</span>
+                                    <span>{{isset($ayuda->email)?$ayuda->email:'No cuenta con email'}}</span>
                                 </div>                                
                             </td>
                             <td class="py-3 px-6 text-center">
                                 <div class="flex items-center justify-center">
-                                    <span>{{$ayuda->telefono}}</span>
+                                    <span>{{isset($ayuda->telefono)?$ayuda->telefono:'no cuenta con numero de telefono'}}</span>
                                 </div>                                
                             </td>
                             <td class="py-3 px-6 text-center">
